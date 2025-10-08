@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Udruga Crni Turmalin – kristali, minerali, fosili</title>
+  <meta name="description" content="Udruga Crni Turmalin – kristali, minerali i fosili. Izložbe, radionice, izrada nakita i edukacije u Varaždinu.">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero" id="home">
+    <nav class="nav">
+      <a href="#home" class="brand">Crni Turmalin</a>
+      <button class="menu-btn" aria-label="Izbornik" onclick="toggleMenu()">☰</button>
+      <ul class="menu" id="menu">
+        <li><a href="#about">O nama</a></li>
+        <li><a href="#gallery">Galerija</a></li>
+        <li><a href="#contact">Kontakt</a></li>
+      </ul>
+    </nav>
+    <div class="hero-inner">
+      <div class="logo-wrap">
+        <!-- Stavi logo datoteku u images/logo.png pa će se ovdje prikazati -->
+        <img src="images/logo.png" alt="Logo Crni Turmalin" onerror="this.style.display='none'">
+      </div>
+      <h1>Udruga Crni Turmalin</h1>
+      <p class="tagline">kristali • minerali • fosili</p>
+      <p class="goldline">Dobrodošli u svijet kristala i minerala – Udruga Crni Turmalin, Varaždin</p>
+      <a href="#contact" class="btn">Kontakt</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="about" class="section">
+      <div class="container">
+        <h2>O nama</h2>
+        <p>
+          Udruga Crni Turmalin okuplja zaljubljenike u kristale, minerale, meteorite i fosile.
+          Bavimo se edukacijom, izložbama, terenskim istraživanjima i izradom jedinstvenog nakita.
+          Posjetite nas u Varaždinu ili nam se javite za suradnju, radionice i događanja.
+        </p>
+        <ul class="pill-list">
+          <li>Geode</li>
+          <li>Meteoriti</li>
+          <li>Fosili</li>
+          <li>Izrada nakita</li>
+          <li>Obrada poludragog i dragog kamena</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="gallery" class="section alt">
+      <div class="container">
+        <h2>Galerija</h2>
+        <p>Ovdje možeš dodati svoje fotografije kristala. Za početak su dodani primjer mjesta-držatelji.</p>
+        <div class="grid">
+          <figure class="card">
+            <div class="ph">Fotografija 1</div>
+            <figcaption>Primjer – Larimar</figcaption>
+          </figure>
+          <figure class="card">
+            <div class="ph">Fotografija 2</div>
+            <figcaption>Primjer – Pallasitni meteorit</figcaption>
+          </figure>
+          <figure class="card">
+            <div class="ph">Fotografija 3</div>
+            <figcaption>Primjer – Ahat</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2>Kontakt</h2>
+        <div class="contact-grid">
+          <div>
+            <h3>Adresa</h3>
+            <p>Kačićeva 1, 42000 Varaždin, Hrvatska</p>
+          </div>
+          <div>
+            <h3>E-mail</h3>
+            <p><a href="mailto:bunceklosinj@gmail.com">bunceklosinj@gmail.com</a></p>
+          </div>
+          <div>
+            <h3>Društvene mreže</h3>
+            <p><a href="https://www.facebook.com/profile.php?id=100075936716058" target="_blank" rel="noopener">Facebook stranica</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> Udruga Crni Turmalin • Varaždin</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
