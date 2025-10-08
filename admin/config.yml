@@ -1,0 +1,28 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: false
+
+media_folder: "images/larimar"
+public_folder: "/images/larimar"
+
+collections:
+  - label: "Galerija - Larimar"
+    name: "larimar"
+    format: "json"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - label: "Larimar slike"
+        name: "larimar_photos"
+        file: "content/larimar.json"
+        fields:
+          - label: "Fotografije"
+            name: "photos"
+            widget: "list"
+            summary: "{{fields.caption}}"
+            fields:
+              - { label: "Slika", name: "src", widget: "image" }
+              - { label: "Opis (alt)", name: "alt", widget: "string", required: false }
