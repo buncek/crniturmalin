@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Larimar – Galerija | Crni Turmalin</title>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    .gallery-wrap { max-width: 1100px; margin: 40px auto; padding: 0 16px; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 14px; }
+    .card { background: #111; border-radius: 12px; overflow: hidden; border: 1px solid #222; }
+    .card img { width: 100%; height: 220px; object-fit: cover; display: block; cursor: zoom-in; }
+    .cap { font-size: 0.95rem; padding: 10px 12px; color: #ddd; }
+    .lb { position: fixed; inset: 0; background: rgba(0,0,0,.85); display: none; align-items: center; justify-content: center; z-index: 9999; }
+    .lb.open { display: flex; }
+    .lb img { max-width: 92vw; max-height: 88vh; border-radius: 8px; }
+    .lb .x { position:absolute; top:18px; right:22px; font-size:28px; color:#fff; cursor:pointer; }
+  </style>
+</head>
+<body class="dark">
+  <header style="text-align:center; padding:28px 0;">
+    <a href="/" style="color:#d9c178; text-decoration:none; font-size:28px; letter-spacing:.5px;">UDRUGA CRNI TURMALIN</a>
+    <div style="margin-top:6px; color:#aaa;">Galerija – Larimar</div>
+  </header>
+
+  <main class="gallery-wrap">
+    <div id="grid" class="gallery-grid"></div>
+  </main>
+
+  <div id="lb" class="lb" onclick="closeLb(event)">
+    <div class="x" onclick="closeLb(event)">✕</div>
+    <img id="lbImg" alt="">
+  </div>
+
+  <script>
+    async function load() {
+      try {
+        const res = await fetch('/content/larimar.json?cache=' + Date.now());
+        const data = await res.json();
+        const grid = document.getElementById('grid');
+        grid.innerHTML = '';
+        (data.photos || []).forEach(p => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          const img = document.createElement('img');
+          img.src = p.src;
+          img.alt = p.alt || 'Larimar';
+          img.onclick = () => openLb(p.src, img.alt);
+          const cap = document.createElement('div');
+          cap.className = 'cap';
+          cap.textContent = p.alt || 'Larimar';
+          card.appendChild(img); card.appendChild(cap);
+          grid.appendChild(card);
+        });
+      } catch (e) {
+        console.error(e);
+        document.getElementById('grid').innerHTML =
+          '<div style="color:#bbb">Nema podataka. Dodaj slike kroz <a href="/admin" style="color:#d9c178">Admin</a>.</div>';
+      }
+    }
+    function openLb(src, alt){ document.getElementById('lbImg').src = src; document.getElementById('lbImg').alt = alt||''; document.getElementById('lb').classList.add('open'); }
+    function closeLb(e){ if(e.target.id==='lb' || e.target.classList.contains('x')) document.getElementById('lb').classList.remove('open'); }
+    load();
+  </script>
+</body>
+</html>
